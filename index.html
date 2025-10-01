@@ -100,7 +100,7 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span>25</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span id="edad"></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Grado:</strong> <span>Tecnólogo</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Correo:</strong> <span>fernandomenesesda@gmail.com</span></li>
                 </ul>
@@ -613,6 +613,26 @@
     document.getElementById("year").innerHTML = n;
   </script>
 
+  <script>
+  function calcularEdad(fechaNacimiento) {
+    const hoy = new Date();
+    const nacimiento = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    const mes = hoy.getMonth() - nacimiento.getMonth();
+
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+
+  // Fecha de nacimiento: 2 Dic 1999
+  const edad = calcularEdad("1999-12-02");
+  document.getElementById("edad").textContent = edad;
+</script>
+
+
 </body>
 
 </html>
+
